@@ -1,0 +1,28 @@
+a{
+    position:fixed;
+    top:20px;
+    right:20px;
+}
+body{
+    background-color:rgba(247, 250, 251, 0.918);
+}
+table{
+    width:100%;
+    border-radius: 8px;
+    overflow:hidden;
+    background-color:rgba(172,215,249,0.918);
+}
+th{
+    border:1px solid rgba(11, 67, 123, 0.918);
+    padding:12px;
+    background-color:rgba(172,215,249,0.918);
+    color:white;
+}
+td{
+    border:0.5px splid rgba(0, 108, 191, 0.918);
+}
+h2{
+    font-size:28px;
+    color:#87bfe2;
+    text-align:center;
+}
