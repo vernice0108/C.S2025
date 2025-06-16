@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOGU Cake Shop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Romanesco&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Romanesco to headings */
+        h1, h2, h3 {
+            font-family: 'Cal Sans', cursive;
+        }
+
+        body {
+            margin: 0;
+            background-color: #FFF0F5;
+            color: #8B5F65;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #f18c8e;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            text-align: center;
+            background: #ffcccb;
+            padding: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #8B5F65;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f18c8e;
+        }
+
+        section {
+            padding: 40px 20px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .cake-item {
+            width: 250px;
+            background: #fff;
+            padding: 15px;
+            margin: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .cake-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cake-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .cake-item button {
+            background-color:#FFB6C1;
+            color: #8B5F65;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cake-item button:hover {
+            background-color: #e07a7c;
+        }
+
+        footer {
+            background-color: #f18c8e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Payment Form Styles */
+        .payment {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .payTitle {
+            margin-bottom: 20px;
+            color: #f18c8e;
+        }
+
+        .payInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .payInput.sm {
+            width: 30%;
+            margin-right: 5%;
+        }
+
+        .payButton {
+            background-color: #f18c8e;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .payButton:hover {
+            background-color: #e07a7c;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #888;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .cardInfo {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cardIcons {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .cardIcon {
+            margin-right: 10px;
+            height: 30px;
+        }
+
+        /* Overlay when payment form is open */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        /* Form validation styles */
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        input.invalid {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MOGU Cake Shop</h1>
+        <p>Delicious Cakes for Every Occasion</p>
+    </header>
+
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#products">Our Cakes</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Whether you're celebrating a special occasion, surprising a loved one, or simply treating yourself, MOGU offers a world of flavors. Our bakers pour passion into every creation, ensuring each dessert is a masterpiece worth savoring.</p>
+    </section>
+
+    <section id="products">
+        <h2>Our Cakes</h2>
+        <div class="products">
+            <div class="cake-item">
+                <img src="img/Product/C1.jpg" alt="Chocolate Cake">
+                <h3>Chocolate Delight</h3>
+                <p>Rich and moist chocolate layered cake.</p>
+                <p class="price">RM88</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="cake-item">
+                <img src="img/Product/V1.jpg" alt="Vanilla Cake">
+                <h3>Vanilla Dream</h3>
+                <p>Classic vanilla with smooth buttercream.</p>
+                <p class="price">RM99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="cake-item">
+                <img src="img/Product/S1.jpg" alt="Strawberry Cake">
+                <h3>Strawberry Bliss</h3>
+                <p>Light and fruity strawberry sponge cake.</p>
+                <p class="price">RM88</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Payment Form (hidden by default) -->
+    <div class="overlay" id="overlay"></div>
+    <div class="payment" id="payment">
+        <h1 class="payTitle">Personal Information</h1>
+        <form id="paymentForm" action="data.php" method="POST">
+            <label>Name and Surname</label>
+            <input type="text" name="name" id="name" placeholder="Eric Chou" class="payInput" required>
+            <div class="error" id="nameError">Please enter your full name</div>
+            
+            <label>Phone Number</label>
+            <input type="tel" name="phone" id="phone" placeholder="+6012 345 6781" class="payInput" maxlength="13" required>
+            <div class="error" id="phoneError">Please enter a valid phone number</div>
+            
+            <label>Address</label>
+            <input type="text" name="address" id="address" placeholder="GG bond 21 22-145" class="payInput" required>
+            <div class="error" id="addressError">Please enter your address</div>
+            
+            <h1 class="payTitle">Card Information</h1>
+            <div class="cardIcons">
+                <img src="img/visa.webp" width="40" alt="Visa" class="cardIcon">
+                <img src="img/master.jpg" alt="Mastercard" width="40" class="cardIcon">
+            </div>
+            
+            <input type="text" name="card_number" id="cardNumber" class="payInput" placeholder="Card Number" maxlength="16" required>
+            <div class="error" id="cardError">Please enter a valid 16-digit card number</div>
+            
+            <div class="cardInfo">
+                <input type="text" name="expiry_month" id="expiryMonth" placeholder="MM" class="payInput sm" maxlength="2" required>
+                <input type="text" name="expiry_year" id="expiryYear" placeholder="YYYY" class="payInput sm" maxlength="4" required>
+                <input type="text" name="cvv" id="cvv" placeholder="CVV" class="payInput sm" maxlength="3" required>
+            </div>
+            <div class="error" id="expiryError">Please enter valid expiry date</div>
+            <div class="error" id="cvvError">Please enter valid CVV</div>
+            
+            <button type="submit" class="payButton">Checkout!</button>
+            <span class="close" id="close-btn">×</span>
+        </form>
+    </div>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <P>Instagram:@Mogu_Cake_Shop</P>
+        <p>Tiktok:@Mogu_Cake_Shop</p>
+        <p>Email: contact@MOGUcakes.com</p>
+        <p>Phone: +1-234-567-8910</p>
+        <p>Address: 123 Cake Street, Dessert City, CA</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MOGU Cake Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Show payment form when Order Now is clicked
+        document.querySelectorAll('.order-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('payment').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close payment form when X is clicked
+        document.getElementById('close-btn').addEventListener('click', function() {
+            closePaymentForm();
+        });
+
+        // Close when clicking on overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            closePaymentForm();
+        });
+
+        function closePaymentForm() {
+            document.getElementById('payment').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            resetFormValidation();
+        }
+
+        // Form validation
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if(validateForm()) {
+                // Form is valid - you would typically process payment here
+                alert('Payment processed successfully!');
+                closePaymentForm();
+                // In a real application, you would submit to your payment processor
+                // this.submit();
+            }
+        });
+
+        function validateForm() {
+            let isValid = true;
+            resetFormValidation();
+            
+            // Name validation
+            const name = document.getElementById('name').value.trim();
+            if(name.length < 3) {
+                document.getElementById('nameError').style.display = 'block';
+                document.getElementById('name').classList.add('invalid');
+                isValid = false;
+            }
+            
+            // Phone validation
+            const phone = document.getElementById('phone').value.trim();
+            if(!/^\+?[0-9\s\-]{10,}$/.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                document.getElementById('phone').classList.add('invalid');
+                isValid = false;
+            }
+            
+            // Address validation
+            const address = document.getElementById('address').value.trim();
+            if(address.length < 10) {
+                document.getElementById('addressError').style.display = 'block';
+                document.getElementById('address').classList.add('invalid');
+                isValid = false;
+            }
+            
+            // Card number validation
+            const cardNumber = document.getElementById('cardNumber').value.trim();
+            if(!/^\d{16}$/.test(cardNumber)) {
+                document.getElementById('cardError').style.display = 'block';
+                document.getElementById('cardNumber').classList.add('invalid');
+                isValid = false;
+            }
+            
+            // Expiry date validation
+            const month = document.getElementById('expiryMonth').value.trim();
+            const year = document.getElementById('expiryYear').value.trim();
+            if(!/^\d{2}$/.test(month) || !/^\d{4}$/.test(year) || 
+               parseInt(month) < 1 || parseInt(month) > 12) {
+                document.getElementById('expiryError').style.display = 'block';
+                document.getElementById('expiryMonth').classList.add('invalid');
+                document.getElementById('expiryYear').classList.add('invalid');
+                isValid = false;
+            }
+            
+            // CVV validation
+            const cvv = document.getElementById('cvv').value.trim();
+            if(!/^\d{3}$/.test(cvv)) {
+                document.getElementById('cvvError').style.display = 'block';
+                document.getElementById('cvv').classList.add('invalid');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        function resetFormValidation() {
+            document.querySelectorAll('.error').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.payInput').forEach(el => {
+                el.classList.remove('invalid');
+            });
+        }
+
+        // Auto-formatting for inputs
+        document.getElementById('expiryMonth').addEventListener('input', function(e) {
+            if(this.value.length > 2) {
+                this.value = this.value.slice(0,2);
+            }
+        });
+
+        document.getElementById('expiryYear').addEventListener('input', function(e) {
+            if(this.value.length > 4) {
+                this.value = this.value.slice(0,4);
+            }
+        });
+
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            if(this.value.length > 3) {
+                this.value = this.value.slice(0,3);
+            }
+        });
+    </script>
+</body>
+</html>
+<nav>
+    <a href="#about">About Us</a>
+    <a href="#products">Our Cakes</a>
+    <a href="#contact">Contact</a>
+    <a href="admin.php" class="admin-btn">Admin</a>  <!-- Added this line -->
+</nav>
